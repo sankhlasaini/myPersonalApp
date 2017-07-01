@@ -1,0 +1,70 @@
+<header>
+    <div fxLayout="row">
+        <!--Sidenav-->
+
+        <md-sidenav-container fullscreen>
+            <md-sidenav #sidenav mode="over" opened="false">
+                <md-toolbar class="sidenavbar">
+                    <button md-icon-button (click)="sidenav.toggle()" class="barWhite"><i class="material-icons">menu</i></button>
+                </md-toolbar>
+
+                <main>
+                    <md-nav-list class="sidenavbar">
+                        <div class="routing_action_buttons">
+                            <div class="rbtn">
+                                <a md-list-item *ngFor="let nav of navList" routerLink={{nav.link}} (click)="sidenav.toggle()">
+                                    <img src="{{nav.path}}"> <span class="navName">{{nav.name}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </md-nav-list>
+                </main>
+            </md-sidenav>
+            <!--main appbar starts-->
+            <md-toolbar>
+                <button md-icon-button (click)="sidenav.toggle()" class="navToggleBtn"><i class="material-icons headermenubar">menu</i></button>
+
+                <span> <a class="navbar-brand" routerLink="/dashboard"><img src="../../assets/images/logo.png"></a></span>
+
+                <span class="searchBar"> 
+              <md-input-container class="searchBar">
+                   <input mdInput placeholder="Search">
+                     <p class="searcicons">  <i class="material-icons right">search</i>
+                         <i class="material-icons right">mic</i>
+                    </p>
+                </md-input-container>
+
+                </span>
+                <span class="example-spacer"></span>
+
+                <span> <button md-icon-button class="headerRightIcons"><i class="fa fa-comments fa-1"></i></button><span class="bubble_count">6</span></span>
+                <span> <button md-icon-button class="headerRightIcons"> <i class="fa fa-bell fa-1"></i></button><span class="bubble_count">3</span>
+                </span>
+                <span> <button md-icon-button class="headerRightIcons"><i class="fa fa-question-circle"></i></button></span>
+
+                <div class="usrProfAcc">
+                    <div class="Name">
+                        <!--{{userName}}-->John John</div>
+                    <div class="subName">Admin</div>
+                </div>
+                <span md-button [mdMenuTriggerFor]="menu" id="dropdownMenu1" class="profIconmenu"><img src="../../assets/images/profile.png"><i class="material-icons">keyboard_arrow_down</i>
+            </span>
+                <md-menu #menu="mdMenu">
+                    <button md-menu-item>User Profile</button>
+                    <button md-menu-item>Settings</button>
+                    <button md-menu-item (click)="logOut()">Log Out</button>
+                </md-menu>
+
+
+            </md-toolbar>
+            <!--     <div class="navcontent-sidenav-content">
+                <button md-button (click)="sidenav.open()">
+       <i class="material-icons">view_headline</i>
+    </button>
+            </div>-->
+        </md-sidenav-container>
+
+
+    </div>
+
+</header>

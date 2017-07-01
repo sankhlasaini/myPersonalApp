@@ -1,0 +1,23 @@
+<div fxLayoutAlign="center">
+  <md-card class="logincard">
+    <md-card-header>
+      <md-card-title>LOGIN</md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20px">
+        <md-input-container fxFlex [floatPlaceholder]="auto" dividerColor="primary">
+          <input mdInput formControlName="email" type="text" required placeholder="Enter Email">
+
+        </md-input-container>
+        <md-input-container fxFlex [floatPlaceholder]="auto" dividerColor="primary">
+          <input mdInput formControlName="password" type="text" required placeholder="Enter Password">
+        </md-input-container>
+
+        <div fxLayoutAlign="center">
+          <button md-raised-button color="primary" type="submit">LOGIN</button>
+        </div>
+      </form>
+    </md-card-content>
+
+  </md-card>
+</div>
