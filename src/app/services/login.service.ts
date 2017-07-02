@@ -12,5 +12,10 @@ export class LoginService {
       return res.json();
     })
   }
-
+  checkDB() {
+    console.log('inside Service');
+    return this._http.get('/profile').map((res: Response) => {
+      return res.json();
+    })
+  }
 }

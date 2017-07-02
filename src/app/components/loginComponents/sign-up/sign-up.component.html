@@ -1,0 +1,54 @@
+<!--header-->
+<app-login-layout></app-login-layout>
+
+<!--main-->
+<div fxLayoutAlign="center" [@bgImgTrigger] class="material-dark-theme">
+    <md-card class="signUpCard" fxFlex.xs="100%" fxFlex.gt-xs="400px">
+        <md-card-header fxLayoutAlign="center">
+            <md-card-title class="title">Sign Up</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <form [formGroup]="signUpForm" (ngSubmit)="signUp()" fxLayout="column" fxLayoutAlign="center">
+                <!--full Name-->
+                <md-input-container fxFlex [floatPlaceholder]="auto" color="accent">
+                    <input mdInput formControlName="name" type="text" required placeholder="Name">
+                    <!--<span mdPrefix><i class="material-icons">account_circle</i></span>-->
+                </md-input-container>
+
+                <!--email-->
+                <md-input-container fxFlex [floatPlaceholder]="auto" color="accent">
+                    <input mdInput formControlName="email" type="email" required placeholder="Email" #email (blur)="checkEmail(email.value)">
+                    <span mdPrefix></span>
+                    <md-hint *ngIf="userExist" align="end">Email Already Exists</md-hint>
+                </md-input-container>
+
+                <!--password-->
+                <md-input-container fxFlex [floatPlaceholder]="auto" color="accent">
+                    <input mdInput formControlName="password" type="password" required placeholder="Password">
+                    <span mdPrefix></span>
+                </md-input-container>
+
+                <!--gender-->
+                <md-radio-group formControlName="gender" [align]="'start'" fxLayoutGap="10%" fxLayoutAlign="center">
+                    <md-radio-button *ngFor="let gen of gender" name="formControlName" [value]="gen.value">
+                        {{gen.view}}
+                    </md-radio-button>
+                </md-radio-group>
+
+                <!--DOB-->
+                <md-input-container fxFlex [floatPlaceholder]="auto" color="accent">
+                    <input mdInput formControlName="dob" [mdDatepicker]="datePickerRef" placeholder="Date Of Birth" [min]="minDate" [max]="maxDate">
+                    <button mdSuffix class="dateBtn" [mdDatepickerToggle]="datePickerRef"></button>
+                </md-input-container>
+                <md-datepicker #datePickerRef touchUi="true"></md-datepicker>
+
+                <div fxLayoutAlign="center" class="submitBtn">
+                    <button md-fab color="accent" type="submit" [disabled]="userExist">
+                        <md-icon class="md-24">check</md-icon>
+                    </button>
+                </div>
+
+            </form>
+        </md-card-content>
+    </md-card>
+</div>

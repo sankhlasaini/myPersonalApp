@@ -27,6 +27,13 @@ var app = express();
 // var host = configSettings.login.host;
 // console.log("Environment- " + env);
 
+
+
+//MONGO 
+// var mongo = require('./ConfigFiles/mongo');
+var webService = require('./server/services/webapp.service');
+var MongoClient = require('mongodb').MongoClient;
+
 // Parsers for POST data
 //app.use(cors());
 app.use(bodyParser.json());
@@ -36,37 +43,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Set our api routes
-// app.use('/api', api);
-//var routes={partnerInvitationSend : require('./server/routes/partnerInvitation.js').partnerInvitationSend }
-//app.post('/partnerInvitationSend' , routes.partnerInvitationSend);
-
-
-
-// Catch all other routes and return the index file
-// app.get('*', (req, res) => {
-//     console.log('******************************************', req.url);
-//     res.sendFile(path.join(__dirname, 'dist/index.html'));
-// });
-
-//login
-app.post('/login', function(req, res) {
-    console.log(req.body, typeof(req.body))
-    res.send({ data: 'this is from server' });
-})
-
-/**
- * Get port from environment and store in Express.
- */
+// Get port from environment and store in Express.
 var port = process.env.PORT || '3000';
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
+// create MONGO connections
+
+app = webService.setupMiddlewares(app);
+
+app = webService.setupRestRoutes(app);
+
+webService.setupMongooseConnections();
+// mongo.setupMongooseConnections();
+
+// Create HTTP server.
 var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+// Listen on provided port, on all network interfaces.
 server.listen(port, () => console.log(`Hey Divesh Server running on localhost:${port}`));

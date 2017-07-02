@@ -1,4 +1,4 @@
-.logincard {
+.signUpCard {
     background-image: -webkit-gradient(linear, left top, right bottom, from(#536DFE), to(#7C4DFF));
 }
 
@@ -8,7 +8,7 @@
     /*color: white;*/
 }
 
-.logincard md-card-content {
+.signUpCard md-card-content {
     padding: 10%;
     padding-bottom: 0px;
 }
@@ -18,13 +18,4 @@
     margin-bottom: 40px;
 }
 
-.fgtPwdBtn:hover {
-    transition: all ease-in-out 200ms;
-    text-shadow: 2px 2px 5px black;
-}
-
-.fgtPwdBtn {
-    font-size: 80%;
-    transition: all ease-in-out 200ms;
-    text-shadow: unset;
-}
+.dateBtn {}

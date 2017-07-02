@@ -1,23 +1,35 @@
-<div fxLayoutAlign="center">
-  <md-card class="logincard">
-    <md-card-header>
-      <md-card-title>LOGIN</md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20px">
-        <md-input-container fxFlex [floatPlaceholder]="auto" dividerColor="primary">
-          <input mdInput formControlName="email" type="text" required placeholder="Enter Email">
+<!--header-->
+<app-login-layout></app-login-layout>
 
-        </md-input-container>
-        <md-input-container fxFlex [floatPlaceholder]="auto" dividerColor="primary">
-          <input mdInput formControlName="password" type="text" required placeholder="Enter Password">
-        </md-input-container>
+<!--main-->
+<div fxLayoutAlign="center" [@bgImgTrigger] class="material-dark-theme">
+    <md-card class="logincard" fxFlex.xs="350px" fxFlex.gt-xs="400px">
+        <md-card-header fxLayoutAlign="center">
+            <md-card-title class="title">LOGIN</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center">
 
-        <div fxLayoutAlign="center">
-          <button md-raised-button color="primary" type="submit">LOGIN</button>
-        </div>
-      </form>
-    </md-card-content>
+                <!--email-->
+                <md-input-container fxFlex [floatPlaceholder]="auto" color="accent">
+                    <input mdInput formControlName="email" type="email" required placeholder="Email">
+                </md-input-container>
 
-  </md-card>
+                <!--password-->
+                <md-input-container fxFlex [floatPlaceholder]="auto" color="accent">
+                    <input mdInput formControlName="password" type="password" required placeholder="Password">
+                </md-input-container>
+
+                <div fxLayoutAlign="end">
+                    <a class="fgtPwdBtn">Forgot Password ?</a>
+                </div>
+
+                <div fxLayoutAlign="center" class="submitBtn">
+                    <button md-fab color="accent" type="submit">
+                        <md-icon class="md-24">check</md-icon>
+                    </button>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
 </div>
